@@ -12,11 +12,11 @@ define(['knockout', 'BaseControl'], function(ko, BaseControl){
 		}
 	}
 
+	BaseControl.extend(ListControl);
+
 	ListControl.prototype.selectItem = function(data, index) {
 		this.selectedIndex(index);
 	};
-
-	BaseControl.extend(ListControl);
 
 	return ListControl;
 });
