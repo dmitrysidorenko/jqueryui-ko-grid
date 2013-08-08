@@ -45,11 +45,7 @@
 				} else {
 					var path = options.id;
 					var controlId = options.id.replace(/(\/*)[a-z]+\//ig, '');
-					require([
-						'/' + path + '/' + controlId + '.js',
-						'text!/' + path + '/' + controlId + '.html',
-						'text!/' + path + '/' + controlId + '.css'
-						], function(js, html, css){
+					require(['control!' + path], function(js, html, css){
 							deferred.resolve(false, js, html, css);
 						});				
 				}
