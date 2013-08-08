@@ -13,12 +13,15 @@
                 "knockout":"/lib/knockout/knockout",
                 "knockout-binding-control":"/js/knockoutBindings/control",
                 "ko-text":"/lib/knockout/stringTemplateEngine",
-                "text":"/lib/require/require.text",
 
                 // # engine #
+                "text":"/lib/require/require.text",
+                "control":"/lib/require/require-app/require.control",
+                // # folder #
+                "controls":"/js/controls",
 
                 // # app #
-                "controls": "/js/controls"
+                "BaseControl": "/js/base/BaseControl"
             },
 
             shim: {

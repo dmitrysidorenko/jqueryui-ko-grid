@@ -14,20 +14,19 @@
 				var options = ko.utils.unwrapObservable(valueAccessor());
 
 				var deferred = $.Deferred();
-				deferred.done(function(isControl, js, html, css){
+				deferred.done(function(isControl, Control){
 					var control = null;
 					if(isControl){
 						control = js;
 					} else {
-						var style = $('head>#controls-style');
-						if(!style[0]){
-							style = $('<style/>').attr('type', 'text/css').attr('id', 'controls-style').appendTo('head');;
-						}
-						style.html(style.html() + '\n\n' + css);
+						// var style = $('head>#controls-style');
+						// if(!style[0]){
+						// 	style = $('<style/>').attr('type', 'text/css').attr('id', 'controls-style').appendTo('head');;
+						// }
+						// style.html(style.html() + '\n\n' + css);
 						var	controlOptions = options.options,
 							controlDataContext = options.dataContext;
-						control = new js(controlOptions, controlDataContext);
-						control._template(html);
+						control = new Control(controlOptions, controlDataContext);
 					}
 
 					var vm = {
@@ -47,9 +46,9 @@
 					var path = options.id;
 					var controlId = options.id.replace(/(\/*)[a-z]+\//ig, '');
 					require([
-						'/js/' + path + '/' + controlId + '.js',
-						'text!/js/' + path + '/' + controlId + '.html',
-						'text!/js/' + path + '/' + controlId + '.css'
+						'/' + path + '/' + controlId + '.js',
+						'text!/' + path + '/' + controlId + '.html',
+						'text!/' + path + '/' + controlId + '.css'
 						], function(js, html, css){
 							deferred.resolve(false, js, html, css);
 						});				

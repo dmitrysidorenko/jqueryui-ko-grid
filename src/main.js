@@ -6,6 +6,7 @@
     ], function() {
         require([
                 'knockout',
+                'control'
             ], function(ko){
             require([
                 'sammy',
