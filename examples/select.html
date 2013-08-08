@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Select</title>
+	<meta charset="utf-8">
+
+
+	<link rel="stylesheet" href="/lib/jquery-ui/themes/base/jquery.ui.all.css">
+
+	<script src="/lib/jquery-ui/jquery-1.9.1.js"></script>
+	<script src="/lib/jquery-ui/ui/jquery.ui.core.js"></script>
+	<script src="/lib/jquery-ui/ui/jquery.ui.widget.js"></script>
+	<script src="/lib/jquery-ui/ui/jquery.ui.mouse.js"></script>
+	<script src="/lib/jquery-ui/ui/jquery.ui.position.js"></script>
+
+	<script src="/lib/knockout/knockout.js"></script>
+	<script src="/lib/knockout/stringTemplateEngine.js"></script>
+
+	<style type="text/css">
+		.select{
+
+		}
+		.select-text{
+			display: inline-block;
+			border:1px solid gray;
+			width:300px;
+			height: 20px;
+		}
+		.select-options{
+			display: none;
+			position: absolute;
+			top:0;
+			left:0;
+			border:1px solid gray;
+		}
+		.select-options ul{
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		.select-options.visible{
+			display: inline-block;
+		}
+	</style>
+</head>
+<body>
+	<select>
+		<option>item 1</option>
+		<option>item 2</option>
+		<option>item 3</option>
+	</select>
+	<div class='select'>
+		<div class='select-text' data-bind='click:selectClick, text:value'></div>
+	</div>
+	<div class='select-options' data-bind="css:{}">
+		<ul data-bind='foreach:options'>
+			<li data-bind='click:function(e){$parent.itemClick(e, $data);}, text:$data'>item 1</li>
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+		var selectEl = $('.select');
+		var selectTextEl = $('.select-text', selectEl);
+		var selectOptionsEl = $('.select-options');
+		var vm = {
+			selectClick:function(e){
+				vm.isVisible(!vm.isVisible());
+				if(vm.isVisible.peek() === true){
+					
+				}
+			},
+			options:ko.observableArray(['item 1', 'item 2', 'item 3']),
+			value:ko.observable(),
+			isVisible:ko.observable(false),
+			itemClick:function(e, item){
+				vm.value(item);
+				vm.isVisible(false);
+
+			}
+		};
+		vm.isVisible.subscribe(function(newVal){
+			if(newVal === true){
+				selectOptionsEl.show();
+				selectOptionsEl.position({
+						of:selectTextEl[0],
+						at:'left bottom',
+						my:'left top',
+						collision:'flip fit'
+					});
+			} else {
+				selectOptionsEl.hide();
+			}
+		}, 'afterChange');
+		ko.applyBindings(vm);
+	</script>
+</body>
+</html>

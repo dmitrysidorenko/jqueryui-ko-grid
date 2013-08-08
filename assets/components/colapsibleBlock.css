@@ -1,0 +1,23 @@
+.colapsibleBlock{}
+
+.colapsibleBlock-header{
+	height: 30px;
+	border:1px solid #ddd;
+	background-color: #efefef;
+	cursor: pointer;
+}
+.colapsibleBlock-header_title{
+	color: #333;
+	font: normal 16px/30px Arial;
+	padding: 0 10px;
+}
+
+.colapsibleBlock-content{
+	border:1px solid #ddd;
+	border-width: 0 1px 1px 1px;
+	overflow: auto;
+	padding: 10px;
+}
+.colapsibleBlock.isClosed .colapsibleBlock-content{
+	display: none;
+}

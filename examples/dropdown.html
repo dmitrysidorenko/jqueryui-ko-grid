@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Select</title>
+	<meta charset="utf-8">
+
+	<link rel="stylesheet" type="text/css" href="/assets/bootstrap/css/bootstrap.css">
+
+	<script src="/lib/jquery/jquery-1.9.1.js"></script>
+	<script src="/lib/knockout/knockout.js"></script>
+	<script src="/lib/knockout/stringTemplateEngine.js"></script>
+	<script type="text/javascript" src="/js/knockoutBindings/addClass.js"></script>
+
+	<script type="text/javascript" src="/js/knockoutBindings/control.js"></script>
+	<script type="text/javascript" src="/js/controls/list.js"></script>
+	<script type="text/javascript" src="/js/controls/dropdown.js"></script>
+
+	<style type="text/css">
+		.ks-dropdown{
+			position: relative;
+		}
+		.ks-dropdown-content .dropdown-menu{
+			font-size: 14px;
+		}
+		.ks-dropdown.open>.ks-dropdown-content>.dropdown-menu{
+			display:block;
+		}
+	</style>
+</head>
+<body>
+	<div class="">
+		<ul class="nav nav-list">
+		  <li class=""><a href="/index.html">На главную</a></li>
+		</ul>
+	</div>
+
+	<div class="">
+		<h2>Dropdown</h2>
+		<div class="row">
+			<div class="span2">
+				<div data-bind="control:{
+									id:'dropdown',
+									dataContext:items,
+									options:{
+										selectedIndex:selectedIndex,
+										isOpen:isOpen
+									}
+								}"></div>
+				
+			</div>
+			<div class="span2">
+				<div>
+					<button class='btn btn-small' data-bind='click:open'>Open</button>
+					<button class='btn btn-small' data-bind='click:close'>Close</button>
+				</div>
+				<div class='navbar navbar-form pull-left'>
+					<input type="text" class='span1' data-bind='value:index'/>
+					<button class='btn' data-bind='click:selectByIndex'>Select</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var ViewModel = function() {
+			this.items = ko.observableArray([
+				{
+					value:'item 1',
+					id:1
+				},
+				{
+					value:'item 2',
+					id:2
+				},
+				{
+					value:'item 3',
+					id:3
+				},
+				{
+					value:'very very long item 4',
+					id:4
+				}
+			]);
+			this.value = ko.observable(this.items()[0]);
+			this.isOpen = ko.observable(false);	
+			this.selectedIndex = ko.observable(0);
+
+			//api
+			this.open = function(){
+				this.isOpen(true);
+			}.bind(this);
+			this.close = function(){
+				this.isOpen(false);
+			}.bind(this);
+			this.selectByIndex = function(){
+				this.selectedIndex(parseInt(this.index()||0));
+			}.bind(this);
+			this.index = ko.observable(1);
+		}
+
+		var vm = new ViewModel();
+		ko.applyBindings(vm);
+	</script>
+</body>
+</html>

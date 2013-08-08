@@ -1,0 +1,83 @@
+/*table, tr, td , th{
+	border-spacing: 0;
+	border: none;
+}
+.grid{
+	display: inline-block;
+	border: 1px solid #aaa;
+}
+.grid-header-table{
+	/*background-color: #1570a6;*/
+	/*border-bottom: 1px solid #aaa;
+}
+*//*
+.grid-header-a:active,
+.grid-header-a:visited {
+	color:#555;
+}
+.grid-header-a{
+	display: block;
+	padding: 5px;
+	text-decoration: none;
+}
+.grid-header-a:hover{
+	background-color: #ccc;
+}
+
+.grid-content{
+	height: 250px;
+	overflow: auto;
+	display: inline-block;
+	color:#333;
+}
+
+.grid-row:hover{
+	background: #ccc;
+}
+.grid-row{
+	line-height: 25px;
+	cursor: default;
+}
+.grid-cell-selected {
+	background-color: #ccc;
+}
+
+.grid-row.grid-row-selected{
+	background: #1570a6;
+}
+
+.grid-row-odd{
+	background: #eeeeee;
+}*/
+table, td, tr, th, tbody, thead{
+	border-spacing:0;
+	padding:0;
+	margin:0;
+}
+
+
+.grid-header-row {}
+.grid-header-column {
+	text-align: left;
+}
+
+.grid-row{
+	color:#333;
+}
+.grid-row.odd{
+	background-color: #efefef;
+}
+.grid-column {
+	text-align: left;
+	/*border-top:1px solid #adadad;*/
+}
+
+.grid-content{
+	max-height: 200px;
+	overflow: auto;
+}
+.grid-header{
+}
+.grid{
+	display: inline-block;
+}

@@ -1,0 +1,22 @@
+{
+  "author": "Dmitry Sidorenko",
+  "name": "ks",
+  "version": "0.1.0",
+  "repository": {
+    "url": ""
+  },
+  "private": true,
+  "engines": {
+    "node": "~0.10"
+  },
+  "dependencies": {
+    "express": ""
+  },
+  "devDependencies": {
+    "jslint": "",
+    "mocha": ""
+  },
+  "scripts": {
+  }
+}
+
