@@ -35,11 +35,14 @@
 					  frameW: model.frameWidth(),
 					  frameH: model.frameHeight(),
 					  useTimer:false,
-					  startCol:0,
-					  startRow:0,
-					  endCol:14,
-					  endRow:0,
+					  //frameStart / colsCount + 1 = startCol 
+					  startCol: getColByIndex( model.frameStart(), model.colsCount() ),
+					  startRow: getRowByIndex( model.frameStart(), model.colsCount() ),
+					  endCol:   getColByIndex( model.frameCount() + model.frameStart(), model.colsCount() ),
+					  endRow:   getRowByIndex( model.frameCount() + model.frameStart(), model.colsCount() ),
 					  interval:1000/(options.fps() || 10),
+					  projectedW :options.projectedW,
+					  projectedH :options.projectedH,
 					  postInitCallback: function() { // Runs when the sprite is ready.
 					    // Start animating.
 					    def.resolve();
@@ -47,7 +50,7 @@
 					});
 				def.done(function(){
 					//setInterval(draw.bind(sprite, context, sprite), 1000/80);
-					run();
+					// run();
 				   	animate();
 				});
 
@@ -61,7 +64,17 @@
 				  sprite.draw(context, 0, 0); // Draw the sprite
 				  requestAnimFrame(animate); // Run the animation loop
 				}
-			}
+
+				function getRowByIndex(i, colsCount){
+					return i / colsCount | 0;
+				}
+
+				function getColByIndex(i, colsCount){
+					return i - getRowByIndex(i, colsCount) * colsCount;
+				}
+
+			} 
+
 		};
 	});
 

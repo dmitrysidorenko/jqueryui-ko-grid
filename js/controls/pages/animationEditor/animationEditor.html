@@ -21,6 +21,12 @@
 			<label>Frame count</label>
 			<input type='number' data-bind='value:frameCount' />
 
+			<label>Frame width</label>
+			<input type='number' data-bind='value:frameWidth' />
+
+			<label>Frame height</label>
+			<input type='number' data-bind='value:frameHeight' />
+
 			<label>Rows count</label>
 			<input type='number' data-bind='value:rowsCount' />
 
@@ -43,6 +49,13 @@
 
 	<div class="span5">
 		<fieldset>
+			<legend>Animation Preview</legend>
+			<div class="thumbnail">
+				<canvas class="preview" id='preview' data-bind='animate:{model:dataContext().loopSprite(), fps:fps, projectedW : 120, projectedH: 157}'/>
+			</div>
+		</fieldset>
+
+		<fieldset>
 			<legend>Sprite preview</legend>
 			<div class="thumbnail">
 			<!--ko if:dataContext()-->
@@ -53,11 +66,5 @@
 			</div>
 		</fieldset>
 
-		<fieldset>
-			<legend>Animation Preview</legend>
-			<div class="thumbnail">
-				<canvas class="preview" id='preview' data-bind='animate:{model:dataContext().loopSprite(), fps:fps}'/>
-			</div>
-		</fieldset>
 	</div>
 </div>
