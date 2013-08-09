@@ -1,8 +1,30 @@
 <div class="page-list">
 	<h3>List</h3>
-	<div data-bind='control:{
-		id:"list",
-		dataContext:items,
-		options:options
-	}'></div>
+	<div>
+		<div class='row-fluid'>
+			<div class='span10'>
+				<button data-bind="click:addItem">Add Item</button>
+				<button data-bind="click:removeItem">Remove Item</button>
+			</div>
+		</div>
+		<div class='row-fluid'>
+			<div class='span10'>
+				<input type='text' class='span2' placeholder='filter items by name' data-bind='value:filter, valueUpdate:"keyup"'/>		
+			</div>
+		</div>
+		<div class='row-fluid'>
+			<div class='span10'>
+				<button data-bind="click:sortUp">Sort up</button>
+				<button data-bind="click:sortDown">Sort down</button>
+			</div>
+		</div>
+	</div>
+	<br>
+	<div>
+		<div data-bind='control:{
+			id:"list",
+			dataContext:filteredItems,
+			options:options
+		}'></div>
+	</div>
 </div>

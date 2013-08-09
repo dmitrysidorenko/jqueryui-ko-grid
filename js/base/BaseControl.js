@@ -1,6 +1,6 @@
 define(['knockout'], function(ko){
 	function BaseControl(dataContext){
-		this.dataContext = ko.observable(dataContext);
+		this.dataContext = ko.isObservable(dataContext) ? dataContext : ko.observable(dataContext);
 		console.dir(this);
 
 		this._template = this.constructor.template;

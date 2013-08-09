@@ -1,0 +1,9 @@
+<div class='ks-dropdown btn-group' data-bind='css:{open:isOpen}'>
+
+	<a class='btn btn-small dropdown-toggle' data-bind='click:click'>
+		<span data-bind='text:selectedItem() ? selectedItem().value : null'></span>
+		<span class='caret'></span>
+	</a>
+
+	<div class='ks-dropdown-content' data-bind='control:listControl'></div>
+</div>

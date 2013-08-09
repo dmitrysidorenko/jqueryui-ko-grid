@@ -1,3 +1,27 @@
+define(['knockout', 'BaseControl'], function(ko, BaseControl){
+	function DropDownControl(options, dataContext){
+		this.constructor.__super__.call(this, dataContext);
+
+		this.addClass = options.addClass || '';
+		this.itemTemplate = options.itemTemplate || "<a href='#' data-bind='text:value'></a>";
+
+		if(ko.isObservable(options.selectedIndex)){
+			this.selectedIndex = options.selectedIndex;
+		} else {
+			this.selectedIndex = ko.observable(options.selectedIndex || 0);
+		}
+	}
+
+	BaseControl.extend(DropDownControl);
+
+	DropDownControl.prototype.selectItem = function(data, index) {
+		this.selectedIndex(index);
+	};
+
+	return DropDownControl;
+});
+
+
 (function(){
 
 	ks.utils.extend(DropDownControl, ks.BaseControl);

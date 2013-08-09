@@ -12,7 +12,11 @@
                 "jquery":"/lib/jquery/jquery-1.9.1",
                 "knockout":"/lib/knockout/knockout",
                 "knockout-binding-control":"/js/knockoutBindings/control",
+                "knockout-binding-addClass":"/js/knockoutBindings/addClass",
+                "knockout-binding-animate":"/js/knockoutBindings/animate",
                 "ko-text":"/lib/knockout/stringTemplateEngine",
+
+                "sprite":"/lib/sprite/sprite",
 
                 // # engine #
                 "text":"/lib/require/require.text",
@@ -31,7 +35,9 @@
                 // # knockout #
                 "knockout": {deps: ["jquery"], exports: "ko"},
 
-                "sammy": {exports: "sammy"}
+                "sammy": {exports: "sammy"},
+
+                "sprite": {exports: "window.Sprite"}
             }
         });
     });
