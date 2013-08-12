@@ -16,55 +16,49 @@
                 'ko-text'
                 ], function(sammy){
                 function AppViewModel(){
+                    //pages
                     this.controls = [
                         {name:'List', id:'pages/list', href:'#/controls/list'},
                         {name:'Dropdown', id:'pages/dropdown', href:'#/controls/dropdown'},
                         {name:'Animation Editor', id:'pages/animationEditor', href:'#/animationEditor'}
                     ];
 
+                    //current page
                     this.activeControlId = ko.observable();                    
-
-                    this.mainControlName = ko.observable();
+                    this.currentControl = ko.observable();
                     this.mainControl = ko.computed(function(){
-                        var id = this.mainControlName();
-                        if(id){
-                            var index = null;
-                            this.controls.some(function(v, i){
-                                var result = v.id === id;
-                                if(result){
-                                    index = i;
-                                }
-                                return result;
-                            }.bind(this));
-                            var control = index !== null ? this.controls[index] : null;
-                            if(control){
-                                this.activeControlId(control.id);
-                                return {
-                                    id:control.id,
-                                    dataContext:null,
-                                    options:{a:1}
-                                };
-                            }
-                            return null;
+                        var control = this.currentControl();
+                        if(control){
+                            this.activeControlId(control.id);
+                            return {
+                                id:control.id,
+                                dataContext:null,
+                                options:control.options
+                            };
                         }
+                        return null;
                     }, this);
                 }
                 var appViewModel = new AppViewModel();
 
+                //router
                 var app = sammy(function () {
-
+                    //add pages to routes
                     var map = appViewModel.controls.map(function(v){
                         return ['get', v.href, function (e) {
-                            appViewModel.mainControlName(v.id);
+                            appViewModel.currentControl(v);
                         }];
                     });
+                    //root route
                     map.push(['get', '/index.html', function (e) {
-                            appViewModel.mainControlName('start');
+                            appViewModel.currentControl(null);
                         }]);
+                    //tadam!
                     this.mapRoutes(map);
                 });
-
+                //run router
                 app.run();
+                //turn on bindings
                 ko.applyBindings(appViewModel);
             });
 

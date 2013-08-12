@@ -12,13 +12,14 @@ define(['knockout', 'BaseControl', 'sprite'], function(ko, BaseControl, Sprite){
 	function SpriteModel(){
 		this.id = ko.observable(1);
 		this.name = ko.observable('Эффект рассеивания');
-		this.graphicResource = ko.observable('/assets/res/robin.png');
+		this.graphicResource = ko.observable('http://jira.dev.playrooms.ru/secure/attachment/21204/sprite.png');
+		// this.graphicResource = ko.observable('http://2.bp.blogspot.com/-mD_cX5gZNAE/TaO74Og4F7I/AAAAAAAAAio/umyTQmA7I80/s200/DawnWalkSide_Dict.png');
 		this.frameStart = ko.observable(0);
-		this.frameCount = ko.observable(22);
-		this.frameWidth = ko.observable(240);
-		this.frameHeight = ko.observable(314);
-		this.rowsCount = ko.observable(5);
-		this.colsCount = ko.observable(5);
+		this.frameCount = ko.observable(15);
+		this.frameWidth = ko.observable(92);
+		this.frameHeight = ko.observable(83);
+		this.rowsCount = ko.observable(1);
+		this.colsCount = ko.observable(15);
 		this.time = ko.observable();
 
 	}

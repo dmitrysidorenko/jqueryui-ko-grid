@@ -26,7 +26,10 @@
 
                 // # app #
                 "BaseControl": "/js/base/BaseControl",
-                "BaseSource": "/js/base/BaseSource"
+                "BaseSource": "/js/base/BaseSource",
+
+                // # utils #
+                "extend" : "/js/utils/extend"
             },
 
             shim: {
