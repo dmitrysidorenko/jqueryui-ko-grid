@@ -1,4 +1,4 @@
 <ul class='ks-list' data-bind='foreach:dataContext, addClass:addClass'>
-	<li class='list-item' data-bind='css:{active:$index() === $parent.selectedIndex()}, click:$parent.selectItem.bind($parent, $data, $index())'><a href='#' data-bind='text:value'></a>
+	<li class='ks-list__item list-item' data-bind='css:{active:$index() === $parent.selectedIndex()}, click:$parent.selectItem.bind($parent, $data, $index())'><a href='#' data-bind='text:value'></a>
 	</li>
 </ul>

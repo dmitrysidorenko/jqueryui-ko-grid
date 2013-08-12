@@ -9,7 +9,7 @@ define(['knockout', 'BaseControl', 'control!list'], function(ko, BaseControl, Li
 		]);
 		this.selectedIndex = ko.observable(1);
 		this.options = {
-			addClass:'dropdown-menu1',
+			addClass:'',
 			selectedIndex:this.selectedIndex
 		};
 
@@ -34,7 +34,7 @@ define(['knockout', 'BaseControl', 'control!list'], function(ko, BaseControl, Li
 		//api demonstration
 		var idIndex = 4;
 		this.addItem = function(){
-			this.items.push({id:idIndex++, value:'item ' + (this.items().length + 1)});
+			this.items.push({id:idIndex++, value: 'item ' + (this.items().length + 1)});
 		}.bind(this);
 
 		this.removeItem = function(){
@@ -47,6 +47,10 @@ define(['knockout', 'BaseControl', 'control!list'], function(ko, BaseControl, Li
 
 		this.ascend = function(){
 			this.items.sort('asc');
+		}.bind(this);
+
+		this.noSort = function(){
+			this.items.sort(null);
 		}.bind(this);
 	}
 
@@ -89,7 +93,12 @@ define(['knockout', 'BaseControl', 'control!list'], function(ko, BaseControl, Li
 	                data = data.sort(function (a, b) {
 	                    var aBy = getBy(a, this.sort.by());
 	                    var bBy = getBy(b, this.sort.by());
-	                    return this.sort() === 'asc' ? aBy > bBy : aBy < bBy;
+
+						if ( aBy < bBy )
+						  return this.sort() === 'asc' ? -1 : 1;
+						if ( aBy > bBy )
+						  return this.sort() === 'asc' ? 1 : -1;
+						return 0;
 	                }.bind(this));
 	            }
 	        }

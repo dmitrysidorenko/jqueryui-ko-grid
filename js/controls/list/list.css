@@ -1,4 +1,11 @@
-.list-item.active{
+.ks-list {
+	list-style: none;
+	margin: 0;
+	background: #fff;
+	display: inline-block;
+}
+
+.ks-list__item.active > a {
 	color: #ffffff;
 	text-decoration: none;
 	outline: 0;
@@ -10,4 +17,14 @@
 	background-image: linear-gradient(to bottom, #0088cc, #0077b3);
 	background-repeat: repeat-x;
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);
+}
+
+.ks-list__item > a{
+	display: block;
+	padding: 3px 20px;
+	clear: both;
+	font-weight: normal;
+	line-height: 20px;
+	color: #333333;
+	white-space: nowrap;
 }
