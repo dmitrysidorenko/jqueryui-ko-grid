@@ -8,33 +8,39 @@
 			<!--ko with:dataContext-->
 
 			<label>Name</label>
-			<input type='text' data-bind='value:name'/>
+			<input type='text' data-bind='value:name, valueUpdate:"keypress"'/>
 
 
 			<!--ko with:loopSprite-->
 			<label>Sprite</label>
-			<input type='text' data-bind='value:graphicResource' />
+			<input type='text' data-bind='value:graphicResource, valueUpdate:"keypress"' />
 
 			<label>Frame start</label>
-			<input type='number' data-bind='value:frameStart' />
+			<input type='number' data-bind='value:frameStart, valueUpdate:"keypress"' />
 
 			<label>Frame count</label>
-			<input type='number' data-bind='value:frameCount' />
+			<input type='number' data-bind='value:frameCount, valueUpdate:"keypress"' />
+
+			<label>Frame width</label>
+			<input type='number' data-bind='value:frameWidth, valueUpdate:"keypress"' />
+
+			<label>Frame height</label>
+			<input type='number' data-bind='value:frameHeight, valueUpdate:"keypress"' />
 
 			<label>Rows count</label>
-			<input type='number' data-bind='value:rowsCount' />
+			<input type='number' data-bind='value:rowsCount, valueUpdate:"keypress"' />
 
 			<label>Cols count</label>
-			<input type='number' data-bind='value:colsCount' />
+			<input type='number' data-bind='value:colsCount, valueUpdate:"keypress"' />
 
 			<label>Time</label>
-			<input type='number' data-bind='value:time' />
+			<input type='number' data-bind='value:time, valueUpdate:"keypress"' />
 
 			<!--/ko-->
 			<!--/ko-->
 
 			<label>FPS</label>
-			<input type='number' data-bind='value:fps' />
+			<input type='number' data-bind='value:fps, valueUpdate:"keypress"' />
 			<span class="help-block">emulate constant FPS</span>
 		</fieldset>
 
