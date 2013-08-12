@@ -50,7 +50,6 @@
 				var model = options.model;
 				var res = model.graphicResource();
 
-
 				var load = loadSprite(res, options, model);
 				var def = load.promise;
 				var sprite = load.sprite;
@@ -111,7 +110,17 @@
 						animationData.startAnimation();
 					});
 				}
-			}
+
+				function getRowByIndex(i, colsCount){
+					return i / colsCount | 0;
+				}
+
+				function getColByIndex(i, colsCount){
+					return i - getRowByIndex(i, colsCount) * colsCount;
+				}
+
+			} 
+
 		};
 	});
 
