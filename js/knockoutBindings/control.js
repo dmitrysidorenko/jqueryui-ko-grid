@@ -1,6 +1,6 @@
-(function() {
+(function(undefined) {
 
-    define(['jquery', 'knockout', 'text'], function($, ko){
+    define(['jquery', 'knockout', 'BaseControl', 'text'], function($, ko, BaseControl){
 
 
 		ks = {
@@ -9,15 +9,20 @@
 
 		ko.bindingHandlers.control = {
 			init:function(el, valueAccessor, allBindingsAccessor, viewModel, bindingContext){
+				return { controlsDescendantBindings: true };
 			},
 			update:function(el, valueAccessor, allBindingsAccessor, viewModel, bindingContext){
 				var options = ko.utils.unwrapObservable(valueAccessor());
 
+				if(options === undefined || options === null){
+					return;
+				}
+
 				var deferred = $.Deferred();
 				deferred.done(function(isControl, Control){
 					var control = null;
-					if(isControl){
-						control = js;
+					if(isControl){	
+						control = Control;
 					} else {
 						// var style = $('head>#controls-style');
 						// if(!style[0]){
@@ -40,7 +45,7 @@
 					ko.applyBindingsToDescendants(widgetBindingContext, el);
 				});
 
-				if(options instanceof ks.BaseControl){
+				if(options instanceof BaseControl){
 					deferred.resolve(true, options);
 				} else {
 					var path = options.id;
@@ -53,28 +58,5 @@
 				return { controlsDescendantBindings: true };
 			}
 		};
-
-
-		function BaseControl(dataContext){
-			this._template = '';
-			this.dataContext = dataContext || ko.observable();
-		}
-		BaseControl.controlTemplate = '<!--ko with:control--><!--ko template:{ html:_template, data:$data }--><!--/ko--><!--/ko-->';
-
-		function _extend(a, b){
-			function _(){
-				this.constructor = a;
-			}
-			_.prototype = b.prototype;
-			a.prototype = new _();
-			a.__super__ = b;
-		}
-
-		ks.BaseControl = BaseControl;
-		ks.utils = {
-			extend : _extend
-		};
-
-
 	});
 })();

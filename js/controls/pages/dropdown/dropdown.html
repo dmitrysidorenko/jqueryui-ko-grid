@@ -1,3 +1,7 @@
-<div class="dropdown">
-	Message:<span data-bind="text:message"></span>
+<div class="page-dropdown">
+	<div data-bind='control:{
+			id:"dropdown",
+			dataContext:items,
+			options:options
+		}'></div>
 </div>

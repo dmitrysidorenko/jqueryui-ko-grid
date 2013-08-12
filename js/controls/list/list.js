@@ -5,17 +5,17 @@ define(['knockout', 'BaseControl'], function(ko, BaseControl){
 		this.addClass = options.addClass || '';
 		this.itemTemplate = options.itemTemplate || "<a href='#' data-bind='text:value'></a>";
 
-		if(ko.isObservable(options.selectedIndex)){
-			this.selectedIndex = options.selectedIndex;
+		if(ko.isObservable(options.selectedItem)){
+			this.selectedItem = options.selectedItem;
 		} else {
-			this.selectedIndex = ko.observable(options.selectedIndex || 0);
+			this.selectedItem = ko.observable(options.selectedItem);
 		}
 	}
 
 	BaseControl.extend(ListControl);
 
 	ListControl.prototype.selectItem = function(data, index) {
-		this.selectedIndex(index);
+		this.selectedItem(data);
 	};
 
 	return ListControl;

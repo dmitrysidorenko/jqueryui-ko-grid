@@ -25,7 +25,8 @@
                 "controls":"/js/controls",
 
                 // # app #
-                "BaseControl": "/js/base/BaseControl"
+                "BaseControl": "/js/base/BaseControl",
+                "BaseSource": "/js/base/BaseSource"
             },
 
             shim: {
