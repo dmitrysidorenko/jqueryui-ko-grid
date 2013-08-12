@@ -1,18 +1,16 @@
-define(['knockout'], function(ko){
+define(['knockout', 'extend'], function(ko, extend){
+	/***
+	 * BaseController class
+	 * @param {*} dataContext
+	 */
 	function BaseControl(dataContext){
 		this.dataContext = ko.isObservable(dataContext) ? dataContext : ko.observable(dataContext);
-		console.dir(this);
-
+		// control loader must care about adding the control's html to  the field '_template'
 		this._template = this.constructor.template;
 	}
 
 	BaseControl.extend = function(a){
-		function _(){
-			this.constructor = a;
-		}
-		_.prototype = this.prototype;
-		a.prototype = new _();
-		a.__super__ = this;
+		return extend(a, this);
 	};
 
 	return BaseControl;

@@ -45,7 +45,10 @@
 		ko.bindingHandlers.animate = {
 			init:function(el, valueAccessor, allBindingsAccessor, viewModel, bindingContext){
 				var options = ko.utils.unwrapObservable(valueAccessor());
-				var context = $(el)[0].getContext('2d');
+				var canvas = $(el)[0];//$('<canvas />').appendTo(el)[0];
+				//canvas.id = 'canv_' + (Math.random() * 1000 | 0);
+
+				console.log('init');
 
 				var model = options.model;
 				var res = model.graphicResource();
@@ -55,9 +58,12 @@
 				var sprite = load.sprite;
 
 				var animationData = {
+					loadedImagePromise:def,
+					canvas:canvas,
 					sprite:sprite,
 					isRun:true,
-					context:context,
+					isInited:false,
+					context:canvas.getContext('2d'),
 					startAnimation:function(){
 						this.isRun = true;
 						this.animate();
@@ -74,50 +80,57 @@
 						  this.sprite.draw(context, 0, 0); // Draw the sprite
 						  requestAnimFrame(this.animate.bind(this)); // Run the animation loop
 						}
-				}
+					}
 				};
 
-				def.done(function(){
+				/*def.done(function(){
 					animationData.startAnimation();
-				});
+				});*/
 
 				$(el).data('_animationData', animationData);
+
+				return { controlsDescendantBindings: true };
 			},
 			update:function(el, valueAccessor, allBindingsAccessor, viewModel, bindingContext){
 				var options = ko.utils.unwrapObservable(valueAccessor());
-				var context = $(el)[0].getContext('2d');
 
 				var model = options.model;
 				var res = model.graphicResource();
 
 				var animationData = $(el).data('_animationData');
-				var sprite = animationData.sprite;
-				sprite.frameW = model.frameWidth();
-				sprite.frameH = model.frameHeight();
-				sprite.useTimer = false;
-				sprite.startCol = colFromIndex(model.frameStart(), model.colsCount());
-				sprite.startRow = rowFromIndex(model.frameStart(), model.colsCount());
-				sprite.endCol = colFromIndex(model.frameCount(), model.colsCount());
-				sprite.endRow = rowFromIndex(model.frameCount(), model.colsCount());
-				sprite.interval = 1000/(options.fps() || 10);
-				if(sprite.sourceFile !== res){
-					animationData.stopAnimation();
-					var load = loadSprite(res, options, model);
-					var def = load.promise;
-					var sprite = load.sprite;
-					animationData.sprite = sprite;
-					def.done(function(){
+
+				$(el).hide().show();
+
+				if(!animationData.isInited){
+					console.log('not isInited');
+					animationData.isInited = true;
+					animationData.loadedImagePromise.done(function(){
 						animationData.startAnimation();
 					});
+				} else {
+					console.log('isInited');
+					var sprite = animationData.sprite;
+					sprite.frameW = model.frameWidth();
+					sprite.frameH = model.frameHeight();
+					sprite.useTimer = false;
+					sprite.startCol = colFromIndex(model.frameStart(), model.colsCount());
+					sprite.startRow = rowFromIndex(model.frameStart(), model.colsCount());
+					sprite.endCol = colFromIndex(model.frameCount(), model.colsCount());
+					sprite.endRow = rowFromIndex(model.frameCount(), model.colsCount());
+					sprite.interval = 1000/(options.fps() || 10);
+					if(sprite.sourceFile !== res){
+						animationData.stopAnimation();
+						var load = loadSprite(res, options, model);
+						var def = load.promise;
+						var sprite = load.sprite;
+						animationData.sprite = sprite;
+						def.done(function(){
+							animationData.startAnimation();
+						});
+					}
 				}
 
-				function getRowByIndex(i, colsCount){
-					return i / colsCount | 0;
-				}
-
-				function getColByIndex(i, colsCount){
-					return i - getRowByIndex(i, colsCount) * colsCount;
-				}
+				return { controlsDescendantBindings: true };
 
 			} 
 

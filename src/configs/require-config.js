@@ -25,7 +25,10 @@
                 "controls":"/js/controls",
 
                 // # app #
-                "BaseControl": "/js/base/BaseControl"
+                "BaseControl": "/js/base/BaseControl",
+
+                // # utils #
+                "extend" : "/js/utils/extend"
             },
 
             shim: {

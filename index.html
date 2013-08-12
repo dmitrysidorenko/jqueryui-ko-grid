@@ -12,14 +12,14 @@
 	  <div class="row">
 	    <div class="span2">
 			<ul class="nav nav-list">
-				<li class="nav-header">Контролы</li>
+				<li class="nav-header">Controls</li>
 				<!--ko foreach:controls-->
 		  		<li class="" data-bind='css:{active:$parent.activeControlId() === id}'><a href="/examples/list.html" data-bind="text:name, attr:{ href:href }">List</a></li>
 				<!--/ko-->
 			</ul>
 	    </div>
 	    <div class="span10">
-			<li class="nav-header">Пример</li>
+			<li class="nav-header">Example</li>
 			<!--ko if:mainControl-->
 			<div data-bind="control:mainControl" class='example' style='background-color:#eee;'></div>
 			<!--/ko-->
