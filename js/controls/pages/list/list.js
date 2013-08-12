@@ -91,13 +91,13 @@ define(['knockout', 'BaseControl', 'control!list'], function(ko, BaseControl, Li
 	        if (this.sort()) {
 	            if (this.sort() === 'asc' || this.sort() === 'desc') {
 	                data = data.sort(function (a, b) {
-	                    var aBy = getBy(a, this.sort.by());
-	                    var bBy = getBy(b, this.sort.by());
+						var aBy = getBy(a, this.sort.by());
+						var bBy = getBy(b, this.sort.by());
 
 						if ( aBy < bBy )
-						  return this.sort() === 'asc' ? -1 : 1;
+							return this.sort() === 'asc' ? -1 : 1;
 						if ( aBy > bBy )
-						  return this.sort() === 'asc' ? 1 : -1;
+							return this.sort() === 'asc' ? 1 : -1;
 						return 0;
 	                }.bind(this));
 	            }
