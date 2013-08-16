@@ -1,0 +1,24 @@
+<div class="b-GameControl">
+	<div class='counter'>Шаги:
+		<div class="counter-value" data-bind='text:map.counter'></div>
+		<button class="reset-btn" data-bind="click:reset">Новый расклад</button>
+		<button class="replay-btn" data-bind="click:replay">Еще раз</button>
+	</div>
+	<!-- ko if: map.cells -->
+	<div class="map" data-bind="foreach:map.cells, attr:{style:'width:' + (map.collsCount * map.cellWidth) + 'px;height:' + (map.rowsCount * map.cellHeight) + 'px;' }">
+		<div class="cell" data-bind="text:weight, attr:{style:'top:' + (y * height) + 'px; left:' + (x * width) + 'px;width:' + width + 'px;height:' + height + 'px;' }, css:{ weight1 : weight() === 1, weight2: weight() ===  2, weight3: weight() === 3, weight4:weight() === 4, invalid:!valid()}, click:click"></div>
+	</div>
+	<!--/ko-->
+
+
+	<div class='win-dialog-container' data-bind='if:win, visible:win()'>
+		<div class="overlay"></div>
+		<div class='win-dialog' data-bind='if:win, visible:win()'>
+			<div class="msg" data-bind='text:win().msg'></div>
+			<div class="button-set">
+				<button class="reset" data-bind="click:reset">Новый расклад</button>
+				<button class="replay" data-bind="click:replay">Еще раз</button>
+			</div>
+		</div>
+	</div>
+</div>

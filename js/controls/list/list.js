@@ -1,6 +1,8 @@
-define(['knockout', 'BaseControl'], function(ko, BaseControl){
+define(['knockout', 'BaseControl', 'BaseSource'], function(ko, BaseControl, BaseSource){
 	function ListControl(options, dataContext){
 		this.constructor.__super__.call(this, dataContext);
+
+		this.source = new BaseSource(dataContext, {});
 
 		this.addClass = options.addClass || '';
 		this.itemTemplate = options.itemTemplate || "<a href='#' data-bind='text:value'></a>";

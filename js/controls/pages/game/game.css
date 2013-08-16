@@ -1,0 +1,83 @@
+.b-GameControl{
+	position: relative;
+	-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;
+}
+
+.map{
+	position: relative;
+	width:400px;
+	height: 400px;
+	background: #964;
+}
+
+.cell{
+	position: absolute;
+	background: #645;
+	/*border: 1px solid #fff;*/
+	font-size: 10px;
+	color:#fff;
+}
+
+.weight1{
+	background:green;
+}
+.weight2{
+	background:blue;
+}
+.weight3{
+	background:orange;
+}
+.weight4{
+	background:red;
+}
+
+.cell.invalid:after{
+	content:"";
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	background: #000;
+	opacity:.5;
+}
+
+.counter{
+	font-size: 14px;
+	padding: 5px 0;
+}
+.counter-value{
+	display: inline-block;
+	font-weight: bold;
+}
+
+.win-dialog-container{
+	position: absolute;
+	top:0;
+	left:0;
+	bottom: 0;
+	right: 0;
+}
+
+.overlay{
+	position: absolute;
+	top: 0;bottom: 0;left: 0;right: 0;
+	background: #000;
+	opacity: .5;
+}
+
+.win-dialog{
+	position: absolute;
+	top: 166px;
+	left: 245px;
+	width: 361px;
+	height: 128px;
+	background: #eee;
+	border: 1px solid gray;
+	text-align: center;
+	padding: 20px;
+}
+
+.msg{
+	padding: 20px 0 40px 0;
+}

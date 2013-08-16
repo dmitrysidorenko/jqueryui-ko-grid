@@ -28,3 +28,11 @@
 	color: #333333;
 	white-space: nowrap;
 }
+
+.ks-list.dropdown-menu{
+	display:none;
+}
+
+.open>.ks-list.dropdown-menu{
+	display:block;
+}
