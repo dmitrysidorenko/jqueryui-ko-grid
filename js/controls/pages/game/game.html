@@ -1,0 +1,5 @@
+<div class="b-GameControl">
+	<div class="map" data-bind="foreach:map.cells, attr:{style:'width:' + (map.collsCount * map.cellWidth) + 'px;height:' + (map.rowsCount * map.cellHeight) + 'px;' }">
+		<div class="cell" data-bind="text:weight, attr:{style:'top:' + (y * height) + 'px; left:' + (x * width) + 'px;width:' + width + 'px;height:' + height + 'px;' }, css:{ weight1 : weight() === 1, weight2: weight() ===  2, weight3: weight() === 3, weight4:weight() === 4, invalid:!valid()}, click:click"></div>
+	</div>
+</div>

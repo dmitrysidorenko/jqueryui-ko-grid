@@ -20,7 +20,8 @@
                     this.controls = [
                         {name:'List', id:'pages/list', href:'#/controls/list'},
                         {name:'Dropdown', id:'pages/dropdown', href:'#/controls/dropdown'},
-                        {name:'Animation Editor', id:'pages/animationEditor', href:'#/animationEditor'}
+                        {name:'Animation Editor', id:'pages/animationEditor', href:'#/animationEditor'},
+                        {name:'Game', id:'pages/game', href:'#/game'}
                     ];
 
                     //current page

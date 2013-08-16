@@ -1,0 +1,42 @@
+.b-GameControl{
+
+}
+
+.map{
+	position: relative;
+	width:400px;
+	height: 400px;
+	background: #964;
+}
+
+.cell{
+	position: absolute;
+	background: #645;
+	/*border: 1px solid #fff;*/
+	font-size: 10px;
+	color:#fff;
+}
+
+.weight1{
+	background:green;
+}
+.weight2{
+	background:blue;
+}
+.weight3{
+	background:orange;
+}
+.weight4{
+	background:red;
+}
+
+.cell.invalid:after{
+	content:"";
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	background: #000;
+	opacity:.5;
+}
