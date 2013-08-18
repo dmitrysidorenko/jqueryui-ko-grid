@@ -16,6 +16,10 @@
 	/*border: 1px solid #fff;*/
 	font-size: 10px;
 	color:#fff;
+	cursor: pointer;
+	font-weight: bold;
+	text-align: center;
+	line-height: 44px;
 }
 
 .weight1{
@@ -31,6 +35,10 @@
 	background:red;
 }
 
+.cell.invalid{
+	cursor: default;
+}
+
 .cell.invalid:after{
 	content:"";
 	position:absolute;
@@ -39,7 +47,20 @@
 	right:0;
 	bottom:0;
 	background: #000;
-	opacity:.5;
+	opacity:.85;
+}
+
+.cell:before {
+	position: absolute;
+	content: '';
+	width: 15px;
+	height: 15px;
+	background: #fff;
+	top: 15px;
+	left: 50%;
+	margin-left: -7px;
+	opacity: 0.4;
+	border-radius: 8px;
 }
 
 .counter{
@@ -71,7 +92,6 @@
 	top: 166px;
 	left: 245px;
 	width: 361px;
-	height: 128px;
 	background: #eee;
 	border: 1px solid gray;
 	text-align: center;
@@ -79,5 +99,38 @@
 }
 
 .msg{
-	padding: 20px 0 40px 0;
+	padding: 0px 0 20px 0;
+}
+
+.statistics{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.statistics > li{
+	padding: 0;
+	margin: 0;
+	border-top:1px solid gray;
+	overflow: hidden;
+}
+
+.game-number{
+	width:50px;
+	float: left;
+}
+
+.game-result{
+	width:150px;
+	float: left;
+	font-weight: bold;
+}
+
+.success{
+	color:green;
+	font-weight: bold;
+}
+.fail{
+	color:red;
+	font-weight: bold;
 }

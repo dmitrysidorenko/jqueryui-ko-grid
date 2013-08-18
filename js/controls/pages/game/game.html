@@ -10,14 +10,23 @@
 	</div>
 	<!--/ko-->
 
+	<h4>Статистика</h4>
+	<div class="statistics-dummy" data-bind='visible:statistics().length < 1'>Пока ничего...</div>
+	<ul class="statistics" data-bind="foreach:statistics" >
+		<li>
+			<div class="game-number" data-bind="text:index"></div>
+			<div class="game-result" data-bind="text:value"></div>
+		</li>
+	</ul>
+
 
 	<div class='win-dialog-container' data-bind='if:win, visible:win()'>
 		<div class="overlay"></div>
 		<div class='win-dialog' data-bind='if:win, visible:win()'>
-			<div class="msg" data-bind='text:win().msg'></div>
+			<div class="msg" data-bind='html:win().msg'></div>
 			<div class="button-set">
-				<button class="reset" data-bind="click:reset">Новый расклад</button>
 				<button class="replay" data-bind="click:replay">Еще раз</button>
+				<button class="reset" data-bind="click:reset">Новый расклад</button>
 			</div>
 		</div>
 	</div>
