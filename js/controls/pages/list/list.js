@@ -13,7 +13,7 @@ define(['knockout', 'BaseControl', 'control!list'], function(ko, BaseControl, Li
 			selectedIndex:this.selectedIndex
 		};
 
-		this.items.sort.by('value');
+		//this.items.sort.by('value');
 
 		this.filteredItems = ko.observableArray();
 		this.filter = ko.observable();
